@@ -34,7 +34,24 @@ const updateEmployeeQuestions = [{
 
 // main inquirer function that will run so as long as the server is connected
 function mainMenu() {
-
+    inquirer.prompt(mainMenuQuestions)
+    .then(response => {
+        if (response.mainMenu === 'View all departments') {
+            viewDepartments();
+        } else if (response.mainMenu === 'View all roles') {
+            viewRoles();
+        } else if (response.mainMenu === 'View all employees') {
+            viewEmployees();
+        } else if (response.mainMenu === 'Add a department') {
+            addDepartment();
+        } else if (response.mainMenu === 'Add a role') {
+            addRole();
+        } else if (response.mainMenu === 'Add an employee') {
+            addEmployee();
+        } else if (response.mainMenu === 'Update an employee role') {
+            updateEmployee();
+        }
+    })
 }
 
 function viewDepartments() {
